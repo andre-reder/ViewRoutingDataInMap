@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useLayoutEffect, useRef } from 'react';
+import blueEmployeeIcon from '../../../../assets/images/icons/blueEmployeeIcon.svg';
 import company from '../../../../assets/images/icons/company.svg';
 import employeeIcon from '../../../../assets/images/icons/employee.svg';
 import greenEmployeeIcon from '../../../../assets/images/icons/greenEmployeeIcon.svg';
-import blueEmployeeIcon from '../../../../assets/images/icons/blueEmployeeIcon.svg';
 import formatCurrency from '../../../../utils/formatCurrency';
 import OpacityAnimation from '../../../OpacityAnimation';
 import { DataFromCsvMappedType, WorkplaceType } from '../../types';
@@ -24,8 +24,7 @@ export default function DisplayMap({ data, selectedWorkplace, selectedEmployee }
 			{
 				lat: i.employeeLat,
 				lng: i.employeeLng,
-				name: i.name,
-				cpf: i.cpf,
+				cpf: `•••.•••.${i.cpf?.slice(8, 16)}`,
 				consultCode: i.consultCode,
 				oldValue: i.oldValue,
 				newValue: i.newValue,
@@ -157,7 +156,6 @@ export default function DisplayMap({ data, selectedWorkplace, selectedEmployee }
 						`<div style="
                 min-inline-size: max-content;
             ">
-              ${employee.name}
               <br>
               CPF: ${employee.cpf}
               <br>
