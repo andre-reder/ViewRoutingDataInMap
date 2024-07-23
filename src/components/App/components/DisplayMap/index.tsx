@@ -24,6 +24,7 @@ export default function DisplayMap({ data, selectedWorkplace, selectedEmployee }
 			{
 				lat: i.employeeLat,
 				lng: i.employeeLng,
+				name: i.name,
 				cpf: `•••.•••.${i.cpf?.slice(8, 16)}`,
 				consultCode: i.consultCode,
 				oldValue: i.oldValue,
@@ -156,7 +157,6 @@ export default function DisplayMap({ data, selectedWorkplace, selectedEmployee }
 						`<div style="
                 min-inline-size: max-content;
             ">
-              <br>
               CPF: ${employee.cpf}
               <br>
               Consulta: ${employee.consultCode}
