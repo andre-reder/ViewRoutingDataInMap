@@ -26,6 +26,7 @@ export default function DisplayMap({ data, selectedWorkplace, selectedEmployee }
 				lng: i.employeeLng,
 				name: i.name,
 				cpf: `•••.•••.${i.cpf?.slice(8, 16)}`,
+				cpfWithoutMask: i.cpf,
 				consultCode: i.consultCode,
 				oldValue: i.oldValue,
 				newValue: i.newValue,
@@ -38,7 +39,7 @@ export default function DisplayMap({ data, selectedWorkplace, selectedEmployee }
 				exitTime: i.exitTime,
 			}
 		));
-		const selectedEmployeeData = employees.find((employee) => employee.cpf === selectedEmployee.value);
+		const selectedEmployeeData = employees.find((employee) => employee.cpfWithoutMask === selectedEmployee.value);
 		const ltCoords = { lat: selectedWorkplace.lat, lng: selectedWorkplace.lng };
 
 		if (!mapRef.current) return undefined;
@@ -122,7 +123,7 @@ export default function DisplayMap({ data, selectedWorkplace, selectedEmployee }
 				const employeeCoord = { lat: employee.lat, lng: employee.lng };
 
 				const choosedIcon = (
-					employee.cpf === selectedEmployee.value
+					employee.cpfWithoutMask === selectedEmployee.value
 						? selectedEmployeeIcon
 						: (employee.optimized ? optimizedEmployeeIcon : notOptimizedEmployeeIcon)
 				);

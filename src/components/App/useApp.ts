@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ChangeEvent, useState } from 'react';
 import Papa from 'papaparse';
-import hasDesiredKeysAndValues from '../../utils/hasDesiredKeysAndValues';
+import { ChangeEvent, useState } from 'react';
 import { toast } from 'react-toastify';
-import isValidCoordFromCsv from '../../utils/isValidCoordFromCsv';
-import { DataFromCsvMappedType, WorkplaceType } from './types';
-import hasDuplicates from '../../utils/hasDuplicatedValueAtArray';
-import removeDuplicates from '../../utils/removeDuplicates';
 import extractNumbers from '../../utils/extractNumbers';
+import hasDesiredKeysAndValues from '../../utils/hasDesiredKeysAndValues';
+import hasDuplicates from '../../utils/hasDuplicatedValueAtArray';
+import isValidCoordFromCsv from '../../utils/isValidCoordFromCsv';
+import removeDuplicates from '../../utils/removeDuplicates';
+import { DataFromCsvMappedType, WorkplaceType } from './types';
 
 interface CustomParseResult<T> extends Papa.ParseResult<T> {
   data: T[];
@@ -41,8 +41,8 @@ export default function useApp() {
 		));
 		const mappedEmployeesOptions = employeesAtWorkplace.map((employee) => (
 			{
-				value: employee.cpf,
-				label: `${employee.consultCode} - ${employee.name}`,
+				value: `${employee.cpf} ${employee.name}`,
+				label: `Consulta ${employee.consultCode}`,
 			}
 		));
 		setEmployeesOptions(mappedEmployeesOptions);
